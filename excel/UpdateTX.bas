@@ -1,4 +1,4 @@
-Attribute VB_Name = "UpdateTX"
+Attribute VB_Name = "modTX"
 Option Explicit
 ' 台指期全日盤日線自動更新（按鈕「更新資料」）
 ' 從期交所下載 TX 近月：開=夜盤開、高低=夜盤+日盤、收=結算價、量=夜盤+日盤

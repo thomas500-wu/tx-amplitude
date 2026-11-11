@@ -97,6 +97,7 @@ Public Function RunUpdate() As String
         End If
     Next k
 
+    PlaceButton
     Application.StatusBar = False
     Application.Cursor = xlDefault
     If added = 0 Then
@@ -141,3 +142,16 @@ Private Function Download(d1 As Date, d2 As Date) As String
     Download = stm.ReadText
     stm.Close
 End Function
+
+' 把「更新資料」按鈕放到最後一筆收盤價往上 6 列的 R 欄
+Public Sub PlaceButton()
+    Dim ws As Worksheet, lr As Long, cel As Range
+    Set ws = ThisWorkbook.Worksheets(1)
+    lr = ws.Cells(ws.Rows.Count, 5).End(xlUp).Row - 6
+    If lr < 2 Then lr = 2
+    Set cel = ws.Cells(lr, 18)
+    With ws.Buttons("btnUpdateTX")
+        .Top = cel.Top
+        .Left = cel.Left
+    End With
+End Sub
